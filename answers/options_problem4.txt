@@ -1,0 +1,25 @@
+To deploy the API and database in the cloud using AWS, here is an approach that can be used:
+
+API Deployment:
+a. Create an EC2 instance with Ubuntu OS and assign a public IP address to it.
+b. Install required dependencies (e.g. Python, Flask, PostgreSQL, etc.).
+c. Clone the project's code into the instance.
+d. Create a virtual environment for the project and install the required Python packages.
+e. Start the Flask server to host the API.
+
+Database Deployment:
+a. Create an RDS instance using PostgreSQL database engine.
+b. Configure the database instance to accept incoming connections from the EC2 instance that hosts the API.
+c. Create a database and tables in the RDS instance.
+d. Set the database URL in the Flask app configuration.
+
+Scheduled data ingestion:
+a. Create an S3 bucket to store the data files.
+b. Create an IAM user with access to the S3 bucket and generate its Access Key and Secret Key.
+c. Configure the EC2 instance with the IAM user's Access Key and Secret Key.
+d. Write a Python script to ingest data from the data sources and upload to S3 bucket.
+e. Create a CloudWatch Event Rule to trigger the data ingestion script at a scheduled interval (e.g. every hour, every day, etc.).
+
+By following this approach, the API will be hosted on an EC2 instance and the data will be stored in an RDS instance and an S3 bucket. 
+The data ingestion process will be scheduled using a CloudWatch Event Rule. This approach provides a scalable and cost-effective way to 
+host the API and data sources in the cloud.
